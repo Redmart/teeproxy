@@ -61,3 +61,8 @@ echo $statsd_prefix
 
 sudo teeproxy -l :${LISTEN_PORT} -a ${PRIMARY_BACKEND} -b ${ALTERNATE_BACKEND} -a.timeout $PRIMARY_TIMEOUT -b.timeout ${ALTERNATE_TIMEOUT} -statsd.address ${STATSD_ADDRESS} -statsd.prefix $statsd_prefix -log.file /tmp/teeproxy.log
 ```
+
+### TODO ###
+* automated tests
+* log rotation
+* makefile & dependency management
