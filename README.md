@@ -16,7 +16,7 @@ teeproxy handles GET, POST, and all other http methods.
 Build
 -------------
 ```
-go build
+make clean deps build
 ```
 
 Usage
