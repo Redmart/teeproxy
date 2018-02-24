@@ -42,3 +42,27 @@ Optionally rewrite host value in the http request header.
 #### Configuring HTTPS ####
 *  `-key.file string`: a TLS private key file. (default `""`)
 *  `-cert.file string`: a TLS certificate file. (default `""`)
+
+#### Configuring statsd ####
+*  `-statsd.address string`: statsd server address in `host:port` format. (default `"localhost:8125"`)
+*  `-statsd.prefix string`: a prefix to be used for your metrics. (default `"teeproxy"`)
+
+#### Configuring logging ####
+*  `-log.file string`: absolute path to the log file. (default `"/tmp/teeproxy.log"`)
+
+NOTE: There is not support for log rotation as of this writing.
+
+#### Sample script to start teeproxy ####
+```
+role=`grep role /etc/chef/first-boot.json | cut -d\[ -f3 | cut -d\] -f1 | tr '_' '-'`
+host=`hostname -s`
+statsd_prefix="redmart.$role.version.$host"
+echo $statsd_prefix
+
+sudo teeproxy -l :${LISTEN_PORT} -a ${PRIMARY_BACKEND} -b ${ALTERNATE_BACKEND} -a.timeout $PRIMARY_TIMEOUT -b.timeout ${ALTERNATE_TIMEOUT} -statsd.address ${STATSD_ADDRESS} -statsd.prefix $statsd_prefix -log.file /tmp/teeproxy.log
+```
+
+### TODO ###
+* automated tests
+* log rotation
+* makefile & dependency management
