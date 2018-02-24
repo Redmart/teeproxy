@@ -63,6 +63,5 @@ sudo teeproxy -l :${LISTEN_PORT} -a ${PRIMARY_BACKEND} -b ${ALTERNATE_BACKEND} -
 ```
 
 ### TODO ###
+* better logging and log rotation
 * automated tests
-* log rotation
-* makefile & dependency management
