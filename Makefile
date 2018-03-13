@@ -7,7 +7,7 @@ GOGET=$(GOCMD) get
 BINARY_NAME=teeproxy
 #BINARY_UNIX=$(BINARY_NAME)_unix
     
-all: build
+all: clean deps build
 build: 
 	$(GOBUILD) -o $(BINARY_NAME) -v
 test: 
@@ -21,6 +21,7 @@ run:
 	./$(BINARY_NAME)
 deps:
 	$(GOGET) github.com/sirupsen/logrus
+	$(GOGET) github.com/NYTimes/logrotate
 	$(GOGET) gopkg.in/alexcesaro/statsd.v2
     
     

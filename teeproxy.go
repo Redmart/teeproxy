@@ -7,12 +7,12 @@ import (
 	"math/rand"
 	"net"
 	"net/http"
-	"os"
 	"runtime"
 	"time"
 
 	proxy "./http"
 
+	"github.com/NYTimes/logrotate"
 	logrus "github.com/sirupsen/logrus"
 	"gopkg.in/alexcesaro/statsd.v2"
 )
@@ -45,7 +45,7 @@ func main() {
 	var listener net.Listener
 
 	//set up logging
-	fileHandle, err := os.OpenFile(*logFile, os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+	fileHandle, err := logrotate.NewFile(*logFile)
 	if err != nil {
 		log.Fatal(err)
 	}
