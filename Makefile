@@ -5,7 +5,7 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 BINARY_NAME=teeproxy
-#BINARY_UNIX=$(BINARY_NAME)_unix
+BINARY_UNIX=$(BINARY_NAME)_unix
     
 all: clean deps build
 build: 
@@ -26,5 +26,5 @@ deps:
     
     
 # Cross compilation
-#build-linux:
-#	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_UNIX) -v
+build-linux:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOBUILD) -o $(BINARY_UNIX) -v

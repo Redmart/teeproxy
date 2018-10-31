@@ -10,7 +10,7 @@ import (
 	"runtime"
 	"time"
 
-	proxy "./http"
+	proxy "teeproxy/http"
 
 	"github.com/NYTimes/logrotate"
 	logrus "github.com/sirupsen/logrus"
